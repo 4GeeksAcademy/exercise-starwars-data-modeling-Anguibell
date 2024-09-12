@@ -81,7 +81,6 @@ class Director(Base):
 class Favorite_Planeta(Base):
     __tablename__ = 'favorite_planeta'
     id = Column(Integer, primary_key=True)
-    user = Column(Integer, ForeignKey("user.id"))
     planeta = Column(Integer, ForeignKey("planeta.id"))
 
     def to_dict(self):
@@ -90,7 +89,6 @@ class Favorite_Planeta(Base):
 class Favorite_Vehiculo(Base):
     __tablename__ = 'favorite_vehiculo'
     id = Column(Integer, primary_key=True)
-    user = Column(Integer, ForeignKey("user.id"))
     vehiculo = Column(Integer, ForeignKey("vehiculo.id"))
 
     def to_dict(self):
@@ -99,7 +97,6 @@ class Favorite_Vehiculo(Base):
 class Favorite_Personaje(Base):
     __tablename__ = 'favorite_personaje'
     id = Column(Integer, primary_key=True)
-    user = Column(Integer, ForeignKey("user.id"))
     personaje = Column(Integer, ForeignKey("personaje.id"))
 
     def to_dict(self):
@@ -108,11 +105,23 @@ class Favorite_Personaje(Base):
 class Favorite_Pelicula(Base):
     __tablename__ = 'favorite_pelicula'
     id = Column(Integer, primary_key=True)
-    user = Column(Integer, ForeignKey("peliculas.id"))
     pelicula = Column(Integer, ForeignKey("peliculas.id"))
 
     def to_dict(self):
         return {}
+    
+class Favorite(Base):
+    __tablename__ = 'favorite'
+    id = Column(Integer, primary_key=True)
+    user = Column(Integer, ForeignKey("user.id"))
+    pelicula = Column(Integer, ForeignKey("peliculas.id"))
+    personaje = Column(Integer, ForeignKey("personaje.id"))
+    vehiculo = Column(Integer, ForeignKey("vehiculo.id"))
+    planeta = Column(Integer, ForeignKey("planeta.id"))
+
+    def to_dict(self):
+        return {}
+
     
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
