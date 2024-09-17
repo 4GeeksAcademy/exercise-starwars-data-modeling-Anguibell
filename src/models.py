@@ -114,10 +114,10 @@ class Favorite(Base):
     __tablename__ = 'favorite'
     id = Column(Integer, primary_key=True)
     user = Column(Integer, ForeignKey("user.id"))
-    pelicula = Column(Integer, ForeignKey("peliculas.id"))
-    personaje = Column(Integer, ForeignKey("personaje.id"))
-    vehiculo = Column(Integer, ForeignKey("vehiculo.id"))
-    planeta = Column(Integer, ForeignKey("planeta.id"))
+    favorite_pelicula = Column(Integer, ForeignKey("favorite_pelicula.id"))
+    favorite_personaje = Column(Integer, ForeignKey("favorite_personaje.id"))
+    favorite_vehiculo = Column(Integer, ForeignKey("favorite_vehiculo.id"))
+    favorite_planeta = Column(Integer, ForeignKey("favorite_planeta.id"))
 
     def to_dict(self):
         return {}
